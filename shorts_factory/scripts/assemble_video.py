@@ -8,84 +8,103 @@ import edge_tts
 from moviepy import *
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
+from dotenv import load_dotenv
+from elevenlabs.client import ElevenLabs
+
+load_dotenv()
 
 # Defaults
-VOICE = "ko-KR-InJoonNeural" # Trusted, mid-tone male voice
-FONT_PATH = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
-FONT_SIZE = 60
 VIDEO_SIZE = (1080, 1920) # 9:16 HD
 
+# Try to get ElevenLabs Key
+ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
+# "Jiyoung" - Warm and Clear (Korean/Multilingual)
+ELEVENLABS_VOICE_ID = "AW5wrnG1jVizOYY7R1Oo"
+
 async def generate_voice(text, output_path):
-    communicate = edge_tts.Communicate(text, VOICE)
+    # Check if ElevenLabs is configured
+    if ELEVENLABS_API_KEY:
+        try:
+            print("Using ElevenLabs for TTS...")
+            client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
+            audio_generator = client.text_to_speech.convert(
+                text=text,
+                voice_id=ELEVENLABS_VOICE_ID,
+                model_id="eleven_multilingual_v2"
+            )
+            with open(output_path, "wb") as f:
+                for chunk in audio_generator:
+                    f.write(chunk)
+            return
+        except Exception as e:
+            print(f"ElevenLabs TTS failed: {e}. Falling back to EdgeTTS.")
+    
+    # Fallback to EdgeTTS
+    print("Using EdgeTTS...")
+    communicate = edge_tts.Communicate(text, "ko-KR-InJoonNeural")
     await communicate.save(output_path)
 
-def create_subtitle_clip(text, duration, video_size=VIDEO_SIZE):
-    W, H = video_size
-    img = Image.new('RGBA', video_size, (0, 0, 0, 0))
-    draw = ImageDraw.Draw(img)
-    
+def generate_sfx(prompt, output_path):
+    if not ELEVENLABS_API_KEY: return False
     try:
-        font = ImageFont.truetype(FONT_PATH, FONT_SIZE)
-    except Exception:
-        font = ImageFont.load_default()
-        print("Warning: Custom font not found, using default.")
-
-    # Wrap text
-    avg_char_width = FONT_SIZE * 0.8
-    chars_per_line = int((W * 0.8) / avg_char_width)
-    lines = textwrap.wrap(text, width=chars_per_line)
-    
-    line_height = FONT_SIZE * 1.5
-    total_height = len(lines) * line_height
-    y_start = (H - total_height) / 2 # Center vertically
-    
-    for i, line in enumerate(lines):
-        bbox = draw.textbbox((0, 0), line, font=font)
-        text_w = bbox[2] - bbox[0]
-        x = (W - text_w) / 2
-        y = y_start + (i * line_height)
-        
-        # Stroke (Black)
-        stroke_width = 4
-        for off_x in range(-stroke_width, stroke_width+1):
-            for off_y in range(-stroke_width, stroke_width+1):
-                draw.text((x+off_x, y+off_y), line, font=font, fill="black")
-                
-        # Fill (Yellow)
-        draw.text((x, y), line, font=font, fill="#FFD700")
-
-    temp_sub = f"temp_sub_{random.randint(0,100000)}.png"
-    img.save(temp_sub)
-    clip = ImageClip(temp_sub).with_duration(duration)
-    return clip, temp_sub
-
+        print(f"Generating SFX: {prompt}...")
+        client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
+        # Generate 10 seconds of ambience
+        response = client.text_to_sound_effects.convert(
+            text=prompt,
+            duration_seconds=10, 
+            prompt_influence=0.5
+        )
+        with open(output_path, "wb") as f:
+            for chunk in response:
+                f.write(chunk)
+        return True
+    except Exception as e:
+        print(f"SFX Generation failed: {e}")
+        return False
 
 async def create_video(script_data, output_file, assets_dir):
     segments = script_data['segments']
     bgm_path = script_data.get('bgm_path')
     
+    # Generate Ambient SFX if BGM is missing
+    if not bgm_path:
+        sfx_path = os.path.join(assets_dir, "ambience_sfx.mp3")
+        if not os.path.exists(sfx_path):
+            # Infer ambience from context or default to nature
+            if generate_sfx("Peaceful nature sounds, birds chirping, gentle wind, calming garden", sfx_path):
+                bgm_path = sfx_path
+            else:
+                print("Skipping SFX/BGM generation.")
+        else:
+            bgm_path = sfx_path
+
     final_clips = []
-    temp_files = []
     
     for i, seq in enumerate(segments):
         print(f"Processing segment {i+1}...")
         
-        # 1. Generate Audio
+        # 1. Generate & Load Audio
         audio_path = os.path.join(assets_dir, f"voice_{i}.mp3")
         await generate_voice(seq['text'], audio_path)
         
-        audio_clip = AudioFileClip(audio_path)
-        duration = audio_clip.duration + 0.5 # Add small pause
-        
-        # 2. Image
-        img_path = seq['image_path']
-        if not os.path.exists(img_path):
-             print(f"Error: Image {img_path} not found.")
+        # Verify audio file exists
+        if not os.path.exists(audio_path) or os.path.getsize(audio_path) == 0:
+             print(f"Error: Audio generation failed for segment {i}.")
              continue
-             
-        img_clip = ImageClip(img_path).with_duration(duration)
+
+        audio_clip = AudioFileClip(audio_path)
+        total_duration = audio_clip.duration + 0.6 # Slightly longer pause for pacing
         
-        # Resize to fill screen (Center Crop)
+        # 2. Image Clip
+        img_path = seq['image_path']
+        if not os.path.exists(img_path): 
+            print(f"Image not found: {img_path}")
+            continue
+             
+        img_clip = ImageClip(img_path).with_duration(total_duration)
+        
+        # Resize/Crop Image
         img_w, img_h = img_clip.w, img_clip.h
         target_ratio = 1080/1920
         current_ratio = img_w/img_h
@@ -98,43 +117,40 @@ async def create_video(script_data, output_file, assets_dir):
             new_h = img_w / target_ratio
             y_center = img_h/2
             img_clip = img_clip.cropped(y1=y_center - new_h/2, width=img_w, height=new_h)
-            
+        
         img_clip = img_clip.resized(new_size=VIDEO_SIZE)
-
-        # 3. Subtitles
-        sub_clip, sub_temp_path = create_subtitle_clip(seq['text'], duration)
-        temp_files.append(sub_temp_path)
         
-        # Composite
-        video_segment = CompositeVideoClip([img_clip, sub_clip.with_position('center')]).with_duration(duration)
-        video_segment = video_segment.with_audio(audio_clip)
+        img_clip = img_clip.with_audio(audio_clip)
+        final_clips.append(img_clip)
         
-        final_clips.append(video_segment)
-        
-    # Concatenate
+    # Concatenate All Segments
     final_video = concatenate_videoclips(final_clips)
     
-    # Add BGM
+    # Add BGM / SFX
     if bgm_path and os.path.exists(bgm_path):
         bgm = AudioFileClip(bgm_path)
+        
+        # Apply volume BEFORE loop to ensure it works on the AudioFileClip
+        bgm = bgm.with_volume_scaled(0.15)
+
+        # Loop to match video
         if bgm.duration < final_video.duration:
-             bgm = afx.AudioLoop(bgm, duration=final_video.duration)
+             # Use the standard .loop() method which is safer in modern MoviePy
+             bgm = bgm.with_effects([afx.AudioLoop(duration=final_video.duration)])
         else:
              bgm = bgm.subclipped(0, final_video.duration)
         
-        bgm = bgm.with_volume_scaled(0.2)
         final_audio = CompositeAudioClip([final_video.audio, bgm])
         final_video = final_video.with_audio(final_audio)
 
     # Write File
-    final_video.write_videofile(output_file, fps=24)
-    
-    # Cleanup
-    for f in temp_files:
-        try:
-            os.remove(f)
-        except:
-            pass
+    final_video.write_videofile(
+        output_file, 
+        fps=24, 
+        codec='libx264', 
+        audio_codec='aac', 
+        ffmpeg_params=['-pix_fmt', 'yuv420p']
+    )
 
 def main():
     parser = argparse.ArgumentParser()

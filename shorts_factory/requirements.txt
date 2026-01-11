@@ -1,3 +1,6 @@
 moviepy
 edge-tts
 asyncio
+elevenlabs
+requests
+python-dotenv

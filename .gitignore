@@ -1,0 +1,8 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+shorts_factory/output/
+shorts_factory/assets/temp_*.png
+shorts_factory/assets/voice_*.mp3
+.env

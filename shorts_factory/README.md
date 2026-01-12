@@ -25,3 +25,9 @@ python shorts_factory/scripts/assemble_video.py --script shorts_factory/script.j
 - Python 3.9+
 - ffmpeg (installed via imageio-ffmpeg)
 - Internet connection (for Edge TTS)
+
+## Content Guidelines (Strict)
+1. **Duration**: Must be **under 60 seconds** (Shorts format).
+2. **Structure**: Maximum **3 Key Points** per video.
+3. **Style**: concise, no unnecessary filler, density insight.
+

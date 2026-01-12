@@ -1,0 +1,41 @@
+{
+    "title": "60대 이후, 절대 곁에 두면 안 되는 사람 유형 3가지",
+    "segments": [
+        {
+            "text": "친구가 많아야 행복하다고요? 착각입니다. 60대부터는 '빼기'를 잘해야 남은 인생이 편안해집니다. 에너지만 갉아먹는 사람, 과감히 끊어내세요.",
+            "image_paths": [
+                "assets/img_002_01_a_burden.png",
+                "assets/img_002_01_b_cut.png"
+            ]
+        },
+        {
+            "text": "첫째, 만나면 불평불만만 쏟아내는 사람입니다. 내 남은 감정 에너지는 귀합니다. 남의 쓰레기통이 되어주지 마세요.",
+            "image_paths": [
+                "assets/img_002_02_a_drain.png",
+                "assets/img_002_02_b_shield.png"
+            ]
+        },
+        {
+            "text": "둘째, 옛날 왕년 이야기하며 자랑만 하는 사람입니다. 과거에 사는 사람은 미래를 좀먹습니다. 지금 이 순간을 나누는 사람과 어울리세요.",
+            "image_paths": [
+                "assets/img_002_03_a_past.png",
+                "assets/img_002_03_b_present.png"
+            ]
+        },
+        {
+            "text": "셋째, 필요할 때만 연락하는 계산적인 사람입니다. 관계는 거래가 아닙니다. 내가 베푼 만큼 돌아오지 않는다면, 그 인연은 다한 것입니다.",
+            "image_paths": [
+                "assets/img_002_04_a_scale.png",
+                "assets/img_002_04_b_closed_door.png"
+            ]
+        },
+        {
+            "text": "사람 정리하는 걸 두려워 마세요. 텅 빈 자리는 고독이 아니라, 비로소 나를 채울 수 있는 '자유'의 공간입니다.",
+            "image_paths": [
+                "assets/img_002_05_a_empty_chair.png",
+                "assets/img_002_05_b_freedom.png"
+            ]
+        }
+    ],
+    "bgm_path": null
+}

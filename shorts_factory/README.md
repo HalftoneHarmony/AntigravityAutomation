@@ -31,3 +31,8 @@ python shorts_factory/scripts/assemble_video.py --script shorts_factory/script.j
 2. **Structure**: Maximum **3 Key Points** per video.
 3. **Style**: concise, no unnecessary filler, density insight.
 
+## Visual Guidelines (Strict)
+1. **Subject Matter**: Images must **ONLY** depict **flowers** or **nature** scenes (landscapes, plants, sky, seasons).
+2. **No Humans**: Avoid generating images of people or specific characters.
+3. **Style**: Consistent, high-quality, aesthetic nature photography or realistic illustration.
+

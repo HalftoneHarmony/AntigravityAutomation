@@ -1,0 +1,46 @@
+{
+    "title": "나이 들수록 입을 닫아야 인생이 핍니다 (3가지 절대 금기어)",
+    "segments": [
+        {
+            "id": "intro",
+            "text": "꽃은 말이 없어도 향기로 벌을 부릅니다. 나이 들어 존경받는 사람은 '말'을 아끼는 사람입니다. 오늘부터 이 3가지는 절대 입 밖으로 내지 마세요.",
+            "image_paths": [
+                "assets/004_intro_flower_scent.png",
+                "assets/004_intro_quiet_forest.png"
+            ]
+        },
+        {
+            "id": "p1",
+            "text": "첫째, 남을 가르치려 드는 말입니다. '나 때는 말이야'.. 지갑은 닫고 입만 열면 꼰대가 됩니다. 묵묵히 서 있는 저 큰 나무처럼, 그저 지켜만 봐주세요. 그게 진짜 어른입니다.",
+            "image_paths": [
+                "assets/004_p1_old_tree.png",
+                "assets/004_p1_roots.png"
+            ]
+        },
+        {
+            "id": "p2",
+            "text": "둘째, 자식 자랑, 돈 자랑입니다. 자랑은 남의 부러움이 아니라 질투만 부릅니다. 빈 수레가 요란한 법이죠. 정말 깊은 물은 소리 없이 흐릅니다. 겸손이 곧 품격입니다.",
+            "image_paths": [
+                "assets/004_p2_calm_river.png",
+                "assets/004_p2_golden_sunset.png"
+            ]
+        },
+        {
+            "id": "p3",
+            "text": "셋째, 남의 험담입니다. 남 욕하는 순간, 내 입에서 썩은 내가 납니다. 결국 그 화살은 나에게 돌아옵니다. 맑은 하늘처럼 깨끗한 말만 담으세요.",
+            "image_paths": [
+                "assets/004_p3_dark_thorn.png",
+                "assets/004_p3_clear_sky.png"
+            ]
+        },
+        {
+            "id": "outro",
+            "text": "입을 닫으면 귀가 열리고, 귀가 열리면 마음을 얻습니다. 오늘 하루, 침묵의 향기로 당신을 채우세요. 당신의 노년이 저 꽃처럼 아름답길 바랍니다.",
+            "image_paths": [
+                "assets/004_outro_blooming.png",
+                "assets/004_outro_starry_night.png"
+            ]
+        }
+    ],
+    "bgm_path": null
+}

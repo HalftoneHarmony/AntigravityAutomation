@@ -1,0 +1,46 @@
+{
+    "title": "노년이 편안해지려면 당장 버려야 할 마음 3가지",
+    "segments": [
+        {
+            "id": "intro",
+            "text": "인생은 정원과 같습니다. 잡초를 뽑지 않으면 꽃이 필 자리가 없죠. 나이 들어 마음이 괴롭다면, 이 3가지 잡초를 키우고 있는지 확인해보세요.",
+            "image_paths": [
+                "assets/005_intro_garden_weeds.png",
+                "assets/005_intro_blooming_flower.png"
+            ]
+        },
+        {
+            "id": "p1",
+            "text": "첫째, '남과의 비교'입니다. 저 산의 소나무는 강가의 버드나무를 부러워하지 않습니다. 그저 자기 자리에서 묵묵히 푸를 뿐이죠. 남의 꽃을 탐내느라 당신의 꽃을 시들게 하지 마세요.",
+            "image_paths": [
+                "assets/005_p1_pine_tree.png",
+                "assets/005_p1_willow_tree.png"
+            ]
+        },
+        {
+            "id": "p2",
+            "text": "둘째, '지나간 후회'입니다. 떨어진 낙엽을 다시 나무에 붙일 순 없습니다. 하지만 그 낙엽은 거름이 되어 내년의 새순을 틔웁니다. 후회 대신 경험이라는 거름을 끌어안으세요.",
+            "image_paths": [
+                "assets/005_p2_fallen_leaves.png",
+                "assets/005_p2_new_sprout.png"
+            ]
+        },
+        {
+            "id": "p3",
+            "text": "셋째, '오지 않은 걱정'입니다. 먹구름이 껴도 태양은 그 뒤에 항상 있습니다. 비가 와야 숲이 맑아지듯, 걱정도 삶의 일부일 뿐입니다. 내일 일은 내일의 바람에게 맡기세요.",
+            "image_paths": [
+                "assets/005_p3_dark_clouds.png",
+                "assets/005_p3_sun_behind_clouds.png"
+            ]
+        },
+        {
+            "id": "outro",
+            "text": "비교, 후회, 걱정. 이 세 가지만 비워내도 당신의 노년은 그 어떤 봄날보다 찬란할 것입니다. 오늘 잡초를 뽑고, 마음의 평화를 심으세요.",
+            "image_paths": [
+                "assets/005_outro_clear_spring.png",
+                "assets/005_outro_zen_stone.png"
+            ]
+        }
+    ],
+    "bgm_path": null
+}

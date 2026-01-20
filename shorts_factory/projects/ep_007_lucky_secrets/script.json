@@ -1,0 +1,40 @@
+{
+    "title": "나이 들수록 운이 쏟아지는 사람들의 3가지 비밀",
+    "segments": [
+        {
+            "text": "나이 들수록 운이 쏟아지는 사람들의 3가지 비밀.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_intro.png"
+            ]
+        },
+        {
+            "text": "첫째, 입이 곧 '보물 창고'입니다. 이들은 불평 대신 감사를, 비난 대신 칭찬을 심습니다. 말이 씨가 된다는 것을 알기에, 입으로 복을 짓고 입으로 운을 부릅니다.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_nature_01_sunlight.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_nature_02_sprout.png"
+            ]
+        },
+        {
+            "text": "둘째, '감탄'을 잃지 않습니다. 길가에 핀 꽃, 따뜻한 햇살 한 줌에도 아이처럼 기뻐합니다. 세상이라는 선물에 진심으로 감동하는 사람에게, 인생은 더 큰 선물을 쥐여줍니다.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_nature_03_wildflower.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_nature_04_sunrise.png"
+            ]
+        },
+        {
+            "text": "셋째, 손해 보는 것을 두려워하지 않습니다. 움켜쥐면 고일 뿐이지만, 베풀면 흐릅니다. 내가 먼저 넉넉하게 내어줄 때, 빈자리는 상상치 못한 행운으로 채워집니다.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_nature_05_river.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_nature_06_fruit_tree.png"
+            ]
+        },
+        {
+            "text": "운은 하늘에서 떨어지는 것이 아니라, 당신의 마음가짐이 만들어내는 향기입니다. 당신은 이미 충분히 운이 좋은 사람입니다.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_outro_walk.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_007_lucky_secrets/assets/ep007_outro_smile.png"
+            ]
+        }
+    ],
+    "bgm_path": null
+}

@@ -1,0 +1,44 @@
+{
+    "title": "흠집 투성이 내 인생, 알고 보니 꽃길이었습니다",
+    "segments": [
+        {
+            "text": "흠집 투성이 내 인생, 알고 보니 꽃길이었습니다.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_01_title_jar.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_01_b_cracks_sunset.png"
+            ]
+        },
+        {
+            "text": "한 노인에게 두 개의 물항아리가 있었습니다. 하나는 멀쩡했지만, 다른 하나는 금이 가서 물을 길어오면 항상 반쯤 비어있었죠. 완벽한 항아리는 뽐냈지만, 금 간 항아리는 늘 부끄러워 고개를 들지 못했습니다.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_02_two_jars.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_02_b_water_trail.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_02_c_two_jars_compare.png"
+            ]
+        },
+        {
+            "text": "어느 날, 노인이 금 간 항아리에게 부드럽게 말했습니다. '네가 지나온 길을 한번 보거라.' 항아리가 고개를 들자, 놀랍게도 그가 지나온 흙길 옆으로 예쁜 야생화들이 만발해 있었습니다.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_03_flower_path.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_03_b_cosmos_close.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_03_c_path_wide.png"
+            ]
+        },
+        {
+            "text": "노인은 웃으며 말했습니다. '나는 네가 금이 간 걸 알고 있었단다. 그래서 그 쪽에 꽃씨를 뿌렸지. 네가 새는 물 덕분에 이 메마른 땅에 아름다운 생명이 피어난 거야.'",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_04_dripping_water.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_04_b_sunlight_soil.png"
+            ]
+        },
+        {
+            "text": "당신의 아픔과 실수는 실패가 아닙니다. 훗날 누군가의 가슴을 적시고, 꽃을 피울 아름다운 거름입니다. 부디 당신의 흠집마저 사랑하십시오.",
+            "image_paths": [
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_05_sunset_landscape.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_05_b_flower_in_crack.png",
+                "/Users/mac/.gemini/antigravity/playground/deep-rocket/shorts_factory/projects/ep_008_broken_jar/assets/ep008_05_c_hanok_dusk.png"
+            ]
+        }
+    ],
+    "bgm_path": null
+}

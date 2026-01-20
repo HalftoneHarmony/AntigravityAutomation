@@ -5,8 +5,14 @@ import sys
 import argparse
 import random
 import edge_tts
-from moviepy import *
+from moviepy.editor import *
+import moviepy.audio.fx.all as afx
 from PIL import Image, ImageDraw, ImageFont
+
+# Monkey patch for Pillow 10+ compatibility with MoviePy v1
+if not hasattr(Image, 'ANTIALIAS'):
+    Image.ANTIALIAS = Image.LANCZOS
+
 import textwrap
 from dotenv import load_dotenv
 from elevenlabs.client import ElevenLabs
@@ -113,7 +119,7 @@ def create_styled_subtitle_clip(text, duration, video_size=VIDEO_SIZE):
 
     temp_sub = f"temp_sub_{random.randint(0,1000000)}.png"
     img.save(temp_sub)
-    clip = ImageClip(temp_sub).with_duration(duration)
+    clip = ImageClip(temp_sub).set_duration(duration)
     return clip, temp_sub
 
 # Try to get ElevenLabs Key
@@ -228,7 +234,7 @@ async def create_video(script_data, output_file, assets_dir):
                 # Better: Skip and extend others? For now, just skip.
                 continue
                 
-            img_clip = ImageClip(img_path).with_duration(slide_duration)
+            img_clip = ImageClip(img_path).set_duration(slide_duration)
             
             # Resize/Crop Image
             img_w, img_h = img_clip.w, img_clip.h
@@ -238,13 +244,13 @@ async def create_video(script_data, output_file, assets_dir):
             if current_ratio > target_ratio:
                 new_w = img_h * target_ratio
                 x_center = img_w / 2
-                img_clip = img_clip.cropped(x1=x_center - new_w/2, width=new_w, height=img_h)
+                img_clip = img_clip.crop(x1=x_center - new_w/2, width=new_w, height=img_h)
             else:
                 new_h = img_w / target_ratio
                 y_center = img_h/2
-                img_clip = img_clip.cropped(y1=y_center - new_h/2, width=img_w, height=new_h)
+                img_clip = img_clip.crop(y1=y_center - new_h/2, width=img_w, height=new_h)
             
-            img_clip = img_clip.resized(new_size=VIDEO_SIZE)
+            img_clip = img_clip.resize(newsize=VIDEO_SIZE)
             segment_clips.append(img_clip)
             
         if not segment_clips:
@@ -255,7 +261,7 @@ async def create_video(script_data, output_file, assets_dir):
         segment_video = concatenate_videoclips(segment_clips)
         
         # Clean Video - No Subtitles
-        segment_video = segment_video.with_audio(audio_clip)
+        segment_video = segment_video.set_audio(audio_clip)
         final_clips.append(segment_video)
         
     # Concatenate All Segments
@@ -264,14 +270,14 @@ async def create_video(script_data, output_file, assets_dir):
     # Add BGM / SFX
     if bgm_path and os.path.exists(bgm_path):
         bgm = AudioFileClip(bgm_path)
-        bgm = bgm.with_volume_scaled(0.15)
+        bgm = bgm.volumex(0.15)
         if bgm.duration < video_main.duration:
-             bgm = bgm.with_effects([afx.AudioLoop(duration=video_main.duration)])
+             bgm = bgm.fx(afx.audio_loop, duration=video_main.duration)
         else:
              bgm = bgm.subclipped(0, video_main.duration)
         
         final_audio = CompositeAudioClip([video_main.audio, bgm])
-        video_main = video_main.with_audio(final_audio)
+        video_main = video_main.set_audio(final_audio)
 
     # Write File
     video_main.write_videofile(

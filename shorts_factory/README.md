@@ -29,10 +29,21 @@ python shorts_factory/scripts/assemble_video.py --script shorts_factory/script.j
 ## Content Guidelines (Strict)
 1. **Duration**: Must be **under 60 seconds** (Shorts format).
 2. **Structure**: Maximum **3 Key Points** per video.
-3. **Style**: concise, no unnecessary filler, density insight.
+3. **Density**: No fluff. Every sentence must have high value.
+4. **Opening**: **NO INTRODUCTIONS.** Start immediately with the Title/Hook segment.
+   - *Bad:* "Hello everyone, today we will talk about..."
+   - *Good:* "3 Reasons why you must..." 
+
+## Self-Correction Loop (Agent Mandate)
+Before finalizing any script, the Agent MUST perform a self-critique:
+1. **Value Check**: "Is this content truly valuable? Would a viewer save this video?"
+   - If generic or cliché -> **REWRITE** with deeper insight or philosophical weight.
+2. **Intro Check**: "Did I start with the Title/Hook immediately?"
+   - If there is any preamble ("Hello", "In this video") -> **DELETE IT**.
+3. **Density Check**: "Can I say this in fewer words with more impact?"
+   - If wordy -> **CONDENSE**.
 
 ## Visual Guidelines (Strict)
 1. **Subject Matter**: Images must **ONLY** depict **flowers** or **nature** scenes (landscapes, plants, sky, seasons).
 2. **No Humans**: Avoid generating images of people or specific characters.
 3. **Style**: Consistent, high-quality, aesthetic nature photography or realistic illustration.
-
